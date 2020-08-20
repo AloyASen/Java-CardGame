@@ -1,4 +1,6 @@
-// this is the game 
+package hello;
+
+// this is the game
 public class SimpleCardGame {
 
    //the deck of 52 cards in this game

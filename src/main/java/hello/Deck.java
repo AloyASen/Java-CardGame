@@ -1,3 +1,7 @@
+package hello;
+
+import java.util.List;
+
 public class Deck{
      private List Cards = [] // will be 52 cards initially
     List suit = ['S', 'H', 'D', 'C'];
@@ -18,9 +22,9 @@ public class Deck{
     // get the three player cards 
     public List draw3cards() {
         List hand = [];
-        hand.addCard(drawCard())
-        hand.addCard(drawCard())
-        hand.addCard(drawCard())
+        hand.addCard(drawCard());
+        hand.addCard(drawCard());
+        hand.addCard(drawCard());
         return hand;
     }
     public String drawCard() {
