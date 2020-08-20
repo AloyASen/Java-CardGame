@@ -43,9 +43,14 @@ public class SimpleCardGame {
     */
     public int start() {
       _isOn =1; 
-      // draw three cards 
+      // draw three cards for each player
+        plyr1.setCards(deck.draw3cards());
+        plyr1.setCards(deck.draw3cards());
+        plyr1.setCards(deck.draw3cards());
+        plyr1.setCards(deck.draw3cards());
+        System.out.println("all the 4 players get the initial set of cards :: 3 each");
       // compare them to check tie / end state
-        return 0;
+        return 0; // for testing purposes TODO
     }
     public int  step(){
       _isOn +=1;

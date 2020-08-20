@@ -2,6 +2,7 @@ package hello;
 
 
 import java.util.List;
+import java.util.ListIterator;
 
 // each player has a state of activity
 public class Player{
@@ -18,6 +19,37 @@ public class Player{
       this. state = new NewPlayer() ;
     }
     List<String> cards;
+    // calculate the score from the cards
+    public int calculateScore(){
+        System.out.println("calculating the score for player ::"+ this.name);
+        getCards();
+        return 0;
+    }
+    // check if trieState of cards appear
+    public boolean checkTriState(){
+        System.out.println("Checking the trie State for player ::"+ this.name);
+        int checker = 3;
+        int temp = 0;
+        for ( String card: cards){
+            ListIterator itr = cards.listIterator();
+            while (itr.hasNext()){
+                if(card.equals(itr.next())){
+                    temp +=1;
+                }
+            }
+            // if checker satisfied then return
+            if(temp >= 3) return true; // HOLA a trie state found
+        }
+        return false; // all cards are checked and no trie state
+    }
+    public List<String> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<String> cards) {
+        this.cards = cards;
+    }
+
     public void setState(State state){
         this.state = state;		
      }
