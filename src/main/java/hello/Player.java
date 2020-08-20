@@ -38,7 +38,24 @@ public class Player{
                 }
             }
             // if checker satisfied then return
-            if(temp >= 3) return true; // HOLA a trie state found
+            if(temp >= checker) return true; // HOLA a trie state found
+        }
+        return false; // all cards are checked and no trie state
+    }
+    // check if biState of cards appear
+    public boolean checkBiState(){
+        System.out.println("Checking the trie State for player ::"+ this.name);
+        int checker = 2;
+        int temp = 0;
+        for ( String card: cards){
+            ListIterator itr = cards.listIterator();
+            while (itr.hasNext()){
+                if(card.equals(itr.next())){
+                    temp +=1;
+                }
+            }
+            // if checker satisfied then return
+            if(temp >= checker) return true; // HOLA a trie state found
         }
         return false; // all cards are checked and no trie state
     }
@@ -53,8 +70,12 @@ public class Player{
     public void setState(State state){
         this.state = state;		
      }
-  
-     public State getState(){
+    public State getState(){
         return state;
-     }    
+     }
+
+    public int drawAnotherCard(String card){
+        cards.add(card);
+        return 1; // status check sum TODO
+    }
 }

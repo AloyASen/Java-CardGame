@@ -27,7 +27,7 @@ public class SimpleCardGame {
     }
     // if player is 'Winner'/ 'loser' -> move to endCycle if tie -> step through
     private void checkPlayerStates(){
-
+    Player Winner =null; // this has to be satisfied per round
       // start the game 
       if (_isOn == 0){
         // this is a new game instance
@@ -42,23 +42,36 @@ public class SimpleCardGame {
       4. implement and output as scheme :: 'One Winner and {{ALL others losers}} for the game ' 
     */
     public int start() {
+        PlayingState gameState =new PlayingState();
       _isOn =1; 
       // draw three cards for each player
         plyr1.setCards(deck.draw3cards());
-        plyr1.setCards(deck.draw3cards());
-        plyr1.setCards(deck.draw3cards());
-        plyr1.setCards(deck.draw3cards());
+        plyr1.setState(gameState);
+
+        plyr2.setCards(deck.draw3cards());
+        plyr2.setState(gameState);
+
+        plyr3.setCards(deck.draw3cards());
+        plyr3.setState(gameState);
+
+        plyr4.setCards(deck.draw3cards());
+        plyr4.setState(gameState);
+
         System.out.println("all the 4 players get the initial set of cards :: 3 each");
       // compare them to check tie / end state
         return 0; // for testing purposes TODO
     }
     public int  step(){
       _isOn +=1;
-
+      // all the players draw a new card
+        plyr1.drawAnotherCard(deck.drawCard());
+        plyr2.drawAnotherCard(deck.drawCard());
+        plyr3.drawAnotherCard(deck.drawCard());
+        plyr4.drawAnotherCard(deck.drawCard());
         return 0;
     }
     public void end() {
-
+        // set all the players to the end state Winner/Loser
         isEnded =true;
     }
  
