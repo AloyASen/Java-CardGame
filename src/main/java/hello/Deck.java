@@ -1,13 +1,15 @@
 package hello;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Deck{
-     private String[] Cards ; // will be 52 cards initially
+     private List<String> Cards ; // will be 52 cards initially
     List<String> suit = new ArrayList<>();
     //all the rank cards in the game A is considered top card
-    String[] rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+    String[] ranks= {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
     public Deck() {
         super(); // currently unused TODO
         suit.add("Spades");
@@ -16,10 +18,19 @@ public class Deck{
         suit.add("clubs");
     }
     private void shuffle() {
-        // shuffle the deck 
+        // shuffle the deck
+        Collections.shuffle(Cards);
+        System.out.println("the shuffled initial deck size of cards: " + deckSize());
     }
     public void init() {
-        
+        ListIterator<String> groups= suit.listIterator();
+        // for all the groups the rank cards are to be added
+        while (groups.hasNext()){
+            for (String rank:
+            ranks) {
+              Cards.add(rank);
+            }
+        }
     }
     // what is the current deck size 
     public int deckSize() {
