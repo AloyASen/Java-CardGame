@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 // each player has a state of activity
-public class Player{
+public class Player extends PointsMap {
     // the state of the game Play
     private State state;
     // the player name 
@@ -28,7 +28,7 @@ public class Player{
     // check if trieState of cards appear
     public boolean checkTriState(){
         System.out.println("Checking the trie State for player ::"+ this.name);
-        int checker = 3;
+        int checker = 2;
         int temp = 0;
         for ( String card: cards){
             ListIterator itr = cards.listIterator();
@@ -42,10 +42,10 @@ public class Player{
         }
         return false; // all cards are checked and no trie state
     }
-    // check if biState of cards appear
-    public boolean checkBiState(){
+    // check if pair State of cards appear
+    public boolean checkPairState(){
         System.out.println("Checking the trie State for player ::"+ this.name);
-        int checker = 2;
+        int checker = 1;
         int temp = 0;
         for ( String card: cards){
             ListIterator itr = cards.listIterator();
