@@ -1,6 +1,8 @@
 package hello;
 
 
+import java.util.List;
+
 // each player has a state of activity
 public class Player{
     // the state of the game Play
@@ -15,7 +17,7 @@ public class Player{
        // initialize the player as   NEW state 
       this. state = new NewPlayer() ;
     }
-    List cards = [];
+    List<String> cards;
     public void setState(State state){
         this.state = state;		
      }

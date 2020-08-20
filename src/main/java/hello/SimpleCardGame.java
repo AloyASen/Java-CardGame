@@ -16,8 +16,12 @@ public class SimpleCardGame {
    // should the Game (Context) cashout and contract to exist!?
    boolean isEnded = false;
    // while creating the game iintialize the players and make the deck 
-    public SimpleCardGame(this.plyr1, this.plyr2, this.plyr3, this.plyr4){
-       state = null;
+    public SimpleCardGame(Player plyr1, Player plyr2, Player plyr3, Player plyr4){
+        // initialize the three players
+        this.plyr1= plyr1;
+        this.plyr2= plyr2;
+        this.plyr3= plyr3;
+        this.plyr4= plyr4;
        deck.init();// shuffles the deck as a shifter function // other processes can also be taken
 
     }
@@ -41,13 +45,16 @@ public class SimpleCardGame {
       _isOn =1; 
       // draw three cards 
       // compare them to check tie / end state
+        return 0;
     }
     public int  step(){
       _isOn +=1;
 
+        return 0;
     }
-    public int end() {
-      isEnded =true;
+    public void end() {
+
+        isEnded =true;
     }
  
 
