@@ -35,7 +35,7 @@ public class Deck{
     // what is the current deck size 
     public int deckSize() {
 
-        return 0;
+        return Cards.size();
     }
     // get the three player cards 
     public List<String> draw3cards() {
@@ -43,10 +43,20 @@ public class Deck{
         hand.add(drawCard());
         hand.add(drawCard());
         hand.add(drawCard());
+        System.out.println("three shuffled cards added to hand");
         return hand;
     }
     public String drawCard() {
-        // get a card and delete it from the list of 'shuffled cards'
-        return null;
+        // get the top  card and delete it from the list of 'shuffled cards'
+        String card;
+        if(deckSize()>0){
+            card = Cards.get(0);
+            Cards.remove(0);
+            System.out.println("New card drawn from the pile" + card);
+            return card;
+        }else {
+            System.out.println("ISSUE:: no more card in pile" );
+            return null;
+        }
     }
 }
