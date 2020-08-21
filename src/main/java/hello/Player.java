@@ -1,6 +1,7 @@
 package hello;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -31,10 +32,9 @@ public class Player extends PointsMap {
         int checker = 2;
         int temp = 0;
         for ( String card: cards){
-            ListIterator itr = cards.listIterator();
-            while (itr.hasNext()){
-                if(card.equals(itr.next())){
-                    temp +=1;
+            for (String s : cards) {
+                if (card.equals(s)) {
+                    temp += 1;
                 }
             }
             // if checker satisfied then return
@@ -55,7 +55,7 @@ public class Player extends PointsMap {
                 }
             }
             // if checker satisfied then return
-            if(temp >= checker) return true; // HOLA a trie state found
+            if(temp >= checker) return true; // HOLA a pair state found
         }
         return false; // all cards are checked and no trie state
     }
@@ -70,15 +70,41 @@ public class Player extends PointsMap {
         return value;
     }
     public int highestSum_bySequence(){
-
+        int sequenceValue =0;
+        // this is responsible for synchromization of sequence checks in
+        boolean previousInSync = Boolean.parseBoolean(null);
+        //order the cards in ascending
+        Collections.sort(cards);
+        // determine sequence height and static sum consequently
+        // use a list iterator for this purpose
+        for (int i = 0; i < cards.size() ; i++) {
+            if( previousInSync && i>0){
+                // look back and compare the points
+                if (pointsTable.get(cards.get(i)) - pointsTable.get(cards.get(i-1)) == 1){
+                    previousInSync =true;
+                    sequenceValue += pointsTable.get(cards.get(i));
+                } else {
+                    // sequence breached ... flush it
+                    sequenceValue =0;
+                }
+            }else if( i==0) {
+                previousInSync =true; //since no data is available
+                sequenceValue += pointsTable.get(cards.get(i));
+            }else {
+                //checksum for the default states
+                previousInSync = false;
+                sequenceValue = 0;
+            }
+        }
+        return sequenceValue;
     }
     public List<String> getCards() {
         return cards;
     }
-    // no setter function :: Code audit
-//    public void setCards(List<String> cards) {
-//        this.cards = cards;
-//    }
+
+    public void setCards(List<String> cards) {
+        this.cards = cards;
+    }
 
     public void setState(State state){
         this.state = state;		
