@@ -1,7 +1,7 @@
 package hello;
 
 public class WinnerState implements State {
-
+    @Override
     public String toString(){
         return "Winner";
     }

@@ -1,13 +1,13 @@
 package hello;
 
-public class LoserState implements State {
+public class TieState implements State{
     @Override
     public void doAction(Player context) {
-        System.out.println("Player is in Loser state");
+        System.out.println("Player is in Tie state");
         context.setState(this);
     }
     @Override
     public String toString(){
-        return "Loser";
+        return "Tie";
     }
 }

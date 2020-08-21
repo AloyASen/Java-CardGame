@@ -17,6 +17,8 @@ public class cardGame {
     // Make the game Context of the game
 
     SimpleCardGame context = new SimpleCardGame(suraj, preetam, soumya, avinash);
+    // start the game play
+    context.start();
 
   }
 }

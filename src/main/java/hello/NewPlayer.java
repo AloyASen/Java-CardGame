@@ -3,7 +3,7 @@ package hello;
 public class NewPlayer implements State {
 
 
- 
+    @Override
     public String toString(){
        return "New";
     }

@@ -59,6 +59,16 @@ public class Player extends PointsMap {
         }
         return false; // all cards are checked and no trie state
     }
+    public int topCard_ByValue(){
+        int value=0;
+        for (String card:
+             cards) {
+            if (pointsTable.get(card) >=value){
+                value= pointsTable.get(card);
+            }
+        }
+        return value;
+    }
     public List<String> getCards() {
         return cards;
     }
