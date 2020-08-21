@@ -77,6 +77,29 @@ public class SimpleCardGame {
         countSimilar =0;
         earMarker =null;
         //check for highest sequence ... check if a __tie
+        System.out.println("checking for highest sequence sum in all the players");
+         // REM :: zero sum is not considered as tie
+        int checksum = 0;
+        for (Player pie:
+             Plyrs) {
+            if (pie.highestSum_bySequence() !=0 && pie.highestSum_bySequence() > checksum){
+                earMarker = pie; // the winner probably
+                countSimilar = 1;
+            } else if(pie.highestSum_bySequence() !=0 && pie.highestSum_bySequence() == checksum){
+                // this is a tie state
+                countSimilar = 2;
+            }
+        }
+        if (countSimilar>=2) {
+            isTie = true;
+            return 2;
+        }else if (countSimilar == 1) {
+            Winner = earMarker;
+            return  1;
+        }
+        // reset the earmarker and count
+        countSimilar =0;
+        earMarker =null;
         //check for pair cards ... check if a __tie
         System.out.println("checking for pair states in all the players");
         for (Player pie:
