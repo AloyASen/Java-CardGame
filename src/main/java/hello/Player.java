@@ -69,13 +69,16 @@ public class Player extends PointsMap {
         }
         return value;
     }
+    public int highestSum_bySequence(){
+
+    }
     public List<String> getCards() {
         return cards;
     }
-
-    public void setCards(List<String> cards) {
-        this.cards = cards;
-    }
+    // no setter function :: Code audit
+//    public void setCards(List<String> cards) {
+//        this.cards = cards;
+//    }
 
     public void setState(State state){
         this.state = state;		

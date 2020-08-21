@@ -24,6 +24,7 @@ public class SimpleCardGame {
    boolean isEnded = false;
    // while creating the game initialize the players and make the deck
     public SimpleCardGame(Player plyr1, Player plyr2, Player plyr3, Player plyr4){
+        System.out.println("Initializing the players and the deck");
         // initialize the four players
         Plyrs.add(plyr1);
         Plyrs.add(plyr2);
@@ -47,6 +48,7 @@ public class SimpleCardGame {
         Player earMarker =null;
         TieState tieState = new TieState();
      // check Trie State ... check if a __tie
+        System.out.println("Checking for trie state for all players");
         for (Player pie:
              Plyrs) {
             if(pie.checkTriState()) {
@@ -76,6 +78,7 @@ public class SimpleCardGame {
         earMarker =null;
         //check for highest sequence ... check if a __tie
         //check for pair cards ... check if a __tie
+        System.out.println("checking for pair states in all the players");
         for (Player pie:
                 Plyrs) {
             if(pie.checkPairState()) {
@@ -100,12 +103,34 @@ public class SimpleCardGame {
             return  1;
         }
 
+        // reset the earmarker and count
+        countSimilar =0;
+        earMarker =null;
+
         // check for top card [ by value ] ... check if a __tie
+        System.out.println("checking all players for top value card");
         for (Player pie:
                 Plyrs) {
-
+            int cmp = 0;
+            if(pie.topCard_ByValue() > cmp){
+                earMarker = pie;
+                countSimilar =1;
+            } else if (pie.topCard_ByValue() == cmp && earMarker != null){
+                earMarker.setState(tieState);
+                earMarker = pie;
+                earMarker.setState(tieState);
+                countSimilar =1;
+            }
+        }
+        if (countSimilar>=2) {
+            isTie = true;
+            return 2;
+        }else if (countSimilar ==1) {
+            Winner = earMarker;
+            return  1;
         }
         // --- continue the game stating it to be a no decider round
+        System.out.println("continue to another step .. this is a no decider rounnd");
       return 0;
     }
     /* the game has 3 lifecycle medthods
@@ -116,8 +141,9 @@ public class SimpleCardGame {
     */
     public int start() {
         PlayingState gameState =new PlayingState();
-      _isOn =1; 
-      // draw three cards for each player
+        _isOn =1;
+        System.out.println("Starting game play , is on round "+ _isOn );
+        // draw three cards for each player
 
         for (Player pie:
              copyPlayers) {
@@ -134,6 +160,7 @@ public class SimpleCardGame {
     }
     public int  step(){
       _isOn +=1;
+        System.out.println("Continue game to next round , is on round "+ _isOn );
       // all the players draw a new card
         // check for tied state and take actions
         if(isTie){
@@ -160,6 +187,7 @@ public class SimpleCardGame {
     }
     public void end() {
         // set all the players to the end state Winner/Loser
+        System.out.println("Wrapping off the game in round "+ _isOn + " with winner" + Winner.name);
         // emd state instances
         LoserState lostState = new LoserState();
         WinnerState winState = new WinnerState();
