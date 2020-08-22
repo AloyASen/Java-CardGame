@@ -17,8 +17,14 @@ public class cardGame {
     // Make the game Context of the game
 
     SimpleCardGame context = new SimpleCardGame(suraj, preetam, soumya, avinash);
-    // start the game play
-    context.start();
+    // start the game play and verify if win is achieved in round 1
+
+    if (context.start() == 1){
+      context.end();
+    } else {
+      while (context.step() != 1) ; // step until game winner is decided
+      context.end(); // sanitize the game play
+    }
 
   }
 }
