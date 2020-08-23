@@ -74,7 +74,7 @@ public class Player extends PointsMap {
         // this is responsible for synchromization of sequence checks in
         boolean previousInSync = Boolean.parseBoolean(null);
         //order the cards in ascending ... according to points
-        Collections.sort(cards);
+        Collections.sort(cards, new SortByPoints());
         // determine sequence height and static sum consequently
         // use a list iterator for this purpose
         for (int i = 0; i < cards.size() ; i++) {
