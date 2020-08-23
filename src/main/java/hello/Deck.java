@@ -26,6 +26,7 @@ public class Deck{
         ListIterator<String> groups= suit.listIterator();
         // for all the groups the rank cards are to be added
         while (groups.hasNext()){
+            System.out.println(" group indexing ranks for :: "+ groups.next());
             for (String rank:
             ranks) {
               Cards.add(rank);
@@ -39,7 +40,7 @@ public class Deck{
     }
     // get the three player cards 
     public List<String> draw3cards() {
-        List<String> hand = null;
+        List<String> hand = new ArrayList<>();
         hand.add(drawCard());
         hand.add(drawCard());
         hand.add(drawCard());
@@ -52,7 +53,7 @@ public class Deck{
         if(deckSize()>0){
             card = Cards.get(0);
             Cards.remove(0);
-            System.out.println("New card drawn from the pile" + card);
+            System.out.println("New card drawn from the pile::" + card);
             return card;
         }else {
             System.out.println("ISSUE:: no more card in pile" );

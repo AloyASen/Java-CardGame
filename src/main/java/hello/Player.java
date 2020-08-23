@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 // each player has a state of activity
 public class Player extends PointsMap {
+
     // the state of the game Play
     private State state;
     // the player name 
@@ -20,20 +21,17 @@ public class Player extends PointsMap {
       this. state = new NewPlayer() ;
     }
     List<String> cards;
-    // calculate the score from the cards
-    public int calculateScore(){
-        System.out.println("calculating the score for player ::"+ this.name);
-        getCards();
-        return 0;
-    }
+    // calculate the winners
     // check if trieState of cards appear
     public boolean checkTriState(){
         System.out.println("Checking the trie State for player ::"+ this.name);
         int checker = 2;
         int temp = 0;
-        for ( String card: cards){
-            for (String s : cards) {
-                if (card.equals(s)) {
+        ListIterator iterator1 = cards.listIterator();
+        ListIterator iterator2 = cards.listIterator();
+        while ( iterator1.hasNext()){
+            while ( iterator2.hasNext()) {
+                if (iterator1.next().equals(iterator2.next()) && iterator1.nextIndex() != iterator2.nextIndex()) {
                     temp += 1;
                 }
             }
@@ -47,11 +45,12 @@ public class Player extends PointsMap {
         System.out.println("Checking the trie State for player ::"+ this.name);
         int checker = 1;
         int temp = 0;
-        for ( String card: cards){
-            ListIterator itr = cards.listIterator();
-            while (itr.hasNext()){
-                if(card.equals(itr.next())){
-                    temp +=1;
+        ListIterator iterator1 = cards.listIterator();
+        ListIterator iterator2 = cards.listIterator();
+        while ( iterator1.hasNext()){
+            while ( iterator2.hasNext()) {
+                if (iterator1.next().equals(iterator2.next()) && iterator1.nextIndex() != iterator2.nextIndex()) {
+                    temp += 1;
                 }
             }
             // if checker satisfied then return
@@ -59,6 +58,7 @@ public class Player extends PointsMap {
         }
         return false; // all cards are checked and no trie state
     }
+
     public int topCard_ByValue(){
         int value=0;
         for (String card:
@@ -73,27 +73,34 @@ public class Player extends PointsMap {
         int sequenceValue =0;
         // this is responsible for synchromization of sequence checks in
         boolean previousInSync = Boolean.parseBoolean(null);
-        //order the cards in ascending
+        //order the cards in ascending ... according to points
         Collections.sort(cards);
         // determine sequence height and static sum consequently
         // use a list iterator for this purpose
         for (int i = 0; i < cards.size() ; i++) {
-            if( previousInSync && i>0){
+            if( i>0){
                 // look back and compare the points
                 if (pointsTable.get(cards.get(i)) - pointsTable.get(cards.get(i-1)) == 1){
-                    previousInSync =true;
-                    sequenceValue += pointsTable.get(cards.get(i));
+                    if(previousInSync == true) {
+                        sequenceValue += pointsTable.get(cards.get(i));
+                        previousInSync =true;
+                    }
+                    else {
+                        sequenceValue = 0;
+                        sequenceValue += pointsTable.get(cards.get(i));
+                        previousInSync = true;
+                    }
                 } else {
                     // sequence breached ... flush it
                     sequenceValue =0;
+                    sequenceValue += pointsTable.get(cards.get(i));
+                    previousInSync = false;
                 }
-            }else if( i==0) {
+            }
+            // special start state only
+            if( i==0) {
                 previousInSync =true; //since no data is available
                 sequenceValue += pointsTable.get(cards.get(i));
-            }else {
-                //checksum for the default states
-                previousInSync = false;
-                sequenceValue = 0;
             }
         }
         return sequenceValue;
@@ -104,6 +111,9 @@ public class Player extends PointsMap {
 
     public void setCards(List<String> cards) {
         this.cards = cards;
+    }
+    public String getName() {
+        return name;
     }
 
     public void setState(State state){

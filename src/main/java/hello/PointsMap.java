@@ -10,7 +10,19 @@ public class PointsMap {
 
     public PointsMap() {
         // put the thirteen different rank card points
-        pointsTable.put("K",10);
+        pointsTable.put("A",13);
+        pointsTable.put("K",12);
+        pointsTable.put("Q",11);
+        pointsTable.put("J",10);
+        pointsTable.put("10",9);
+        pointsTable.put("9",8);
+        pointsTable.put("8",7);
+        pointsTable.put("7",6);
+        pointsTable.put("6",5);
+        pointsTable.put("5",4);
+        pointsTable.put("4",3);
+        pointsTable.put("3",3);
+        pointsTable.put("2",1);
     }
 
     public Map<String, Integer> getPointsTable() {

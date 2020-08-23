@@ -65,6 +65,7 @@ public class SimpleCardGame {
                 countSimilar += 1;
             }
         }
+
         if (countSimilar>=2) {
             isTie = true;
             return 2;
@@ -182,6 +183,10 @@ public class SimpleCardGame {
         return checkPlayerStates(); // for testing purposes TODO
     }
     public int  step(){
+        if(deck.deckSize()<=0){
+            System.out.println("No more cards in game abort ... no winner !!!");
+            System.exit(0);
+        }
       _isOn +=1;
         System.out.println("Continue game to next round , is on round "+ _isOn );
       // all the players draw a new card
@@ -203,6 +208,17 @@ public class SimpleCardGame {
                     copyPlayers) {
                 pie.drawAnotherCard(deck.drawCard());
             }
+        }
+        //for every step display the player deck
+        for (Player pie:
+             copyPlayers) {
+            System.out.print("Player :" + pie.getName());
+            List<String> cardStack = pie.getCards();
+            for (String card:
+                 cardStack) {
+                System.out.print(" , " + card);
+            }
+            System.out.println("Owns these cards in this round");
         }
         // compare them to check tie / end state
 
