@@ -57,7 +57,9 @@ dependencies {
     testCompile "junit:junit:4.12"
 }
 // end::dependencies[]
-
+tasks.withType(JavaCompile) {
+    options.bootstrapClasspath = files("$JDK_HOME/jre/lib/rt.jar")
+}
 // tag::wrapper[]
 task wrapper(type: Wrapper) {
     gradleVersion = '3.5'

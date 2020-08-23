@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Deck{
-     private List<String> Cards ; // will be 52 cards initially
+     private List<String> Cards = new ArrayList<>(); // will be 52 cards initially
     List<String> suit = new ArrayList<>();
     //all the rank cards in the game A is considered top card
     String[] ranks= {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
