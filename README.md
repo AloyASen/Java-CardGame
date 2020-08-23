@@ -1,7 +1,45 @@
 #What should you expect from this project
 Solving a library Design problem for a card game
 ### Problem statement
+```
+The festival season is here and we realize it's hard to play
+all those complicated card games, when drunk !!! 
+We decided to make a simple luck based game for people top play 
+when they have limited motor and sensory control. hang tight !!!
 
+Basic rules
+- use a standard deck of cards (no joker)
+- 'A' is considered to have a number value of 1 
+- 'A' is considered the top card in a face-off. so the order is 
+A>K>Q>J>10...2
+
+Victory 
++ A trail [Three cards of the same number] is the 
+highest possible combination
++ the next highest is a sequence (numbers in a order
+eg., 4,5,6. A is consideredc to have tohe value of 1 )
++ The next highest is a pair of cards ( two kings or two 10's )
++ if all else fails the top card by nuber value wins)
++ If there is a tie, each tied player draws a single card from the deck untill the
+winner is found 
++ onky the newly drawn cards are compared to decide a tie
+The top card ( by victory sequencing ) wins a tie.
++ for now the suit ( spade / hearts ) does not matter .  
+
+```
+
+### The gameplan demonstrated here 
+
++ Simulate a game between four players
++ Randomly deal them cards from a deck.
++ determine the winner.
+
+### What are we interested in
++ Usage of core libraries
++ Display of testing using JUnit
++ Library design using design patterns 
++ Implementation of game lifecycles.
++ Probable game states (for better debugging )
 
 # Building this Projects with Gradle
 
