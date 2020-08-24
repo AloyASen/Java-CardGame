@@ -256,5 +256,25 @@ Handle it according to the logging provided by `gradle build`.
 
 according to the requirements of the production build
 
+#### To manage the gmaeplay 
+
++ Dial the knobs of the random seed in ```./src/main/java/hello/Deck.java```
+
+```
+...
+private void shuffle() {
+        // shuffle the deck
+        Collections.shuffle(Cards, new Random(<SEED HERE>));
+        System.out.println("the shuffled initial deck size of cards: " + deckSize());
+        for (String card:
+             Cards) {
+            System.out.print(" "+ card);
+        }
+        System.out.println(" is the list of cards in the shuffled deck");  
+}
+...
+
+``` 
+
 ##### There are bugs that need to be probed detected and handled ... I don't intend it for production, though this code is quite production ready.
 
