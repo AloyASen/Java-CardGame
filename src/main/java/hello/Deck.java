@@ -1,9 +1,6 @@
 package hello;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class Deck{
      private List<String> Cards = new ArrayList<>(); // will be 52 cards initially
@@ -19,8 +16,13 @@ public class Deck{
     }
     private void shuffle() {
         // shuffle the deck
-        Collections.shuffle(Cards);
+        Collections.shuffle(Cards, new Random(3));
         System.out.println("the shuffled initial deck size of cards: " + deckSize());
+        for (String card:
+             Cards) {
+            System.out.print(" "+ card);
+        }
+        System.out.println(" is the list of cards in the shuffled deck");
     }
     public void init() {
         ListIterator<String> groups= suit.listIterator();
@@ -32,6 +34,8 @@ public class Deck{
               Cards.add(rank);
             }
         }
+        // now shuffle the cards
+        shuffle();
     }
     // what is the current deck size 
     public int deckSize() {
@@ -57,6 +61,7 @@ public class Deck{
             return card;
         }else {
             System.out.println("ISSUE:: no more card in pile" );
+            System.exit(0);
             return null;
         }
     }

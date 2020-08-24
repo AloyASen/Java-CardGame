@@ -85,10 +85,13 @@ public class SimpleCardGame {
              Plyrs) {
             if (pie.highestSum_bySequence() !=0 && pie.highestSum_bySequence() > checksum){
                 earMarker = pie; // the winner probably
+                checksum= pie.highestSum_bySequence();
                 countSimilar = 1;
             } else if(pie.highestSum_bySequence() !=0 && pie.highestSum_bySequence() == checksum){
                 // this is a tie state
+                earMarker.setState(tieState);
                 countSimilar = 2;
+                pie.setState(tieState);
             }
         }
         if (countSimilar>=2) {
@@ -188,7 +191,7 @@ public class SimpleCardGame {
             System.exit(0);
         }
       _isOn +=1;
-        System.out.println("Continue game to next round , is on round "+ _isOn );
+        System.out.println("Continue game to next round , is on round "+ _isOn + "state : "+isTie );
       // all the players draw a new card
         // check for tied state and take actions
         if(isTie){

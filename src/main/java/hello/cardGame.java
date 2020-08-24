@@ -18,13 +18,12 @@ public class cardGame {
 
     SimpleCardGame context = new SimpleCardGame(suraj, preetam, soumya, avinash);
     // start the game play and verify if win is achieved in round 1
-
-    if (context.start() == 1){
-      context.end();
-    } else {
-      while (context.step() != 1) ; // step until game winner is decided
-      context.end(); // sanitize the game play
+    int stepper=0;
+    for (context.start();stepper != 1; ){
+      stepper = context.step() ;
     }
+    // step end has been reached
+    context.end();
 
   }
 }
