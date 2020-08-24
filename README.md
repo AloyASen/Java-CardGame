@@ -37,9 +37,12 @@ The top card ( by victory sequencing ) wins a tie.
 ### What are we interested in
 + Usage of core libraries
 + Display of testing using JUnit
-+ Library design using design patterns 
++ Game Library design using design patterns 
 + Implementation of game lifecycles.
-+ Probable game states (for better debugging )
++ Probe able game states (for better debugging )
++ Plugable and extensible architecture with multi gradle architecture.
++ Secure game deck with overflow locking.
++ usage of Protected, private and public functors , to properly manage scope.
 
 # Building this Projects with Gradle
 
@@ -169,7 +172,9 @@ mainClassName = 'hello.HelloWorld'
   :classes UP-TO-DATE
   :run
 
-  Hello world!
+  Hello!
+  Initializing the players and the deck
+  ...
 
   BUILD SUCCESSFUL
   Total time: 4.009 secs
@@ -204,7 +209,7 @@ Handle it according to the logging provided by `gradle build`.
 + After this task completes, you will notice a few new files. The two scripts are in the root of the folder, while the wrapper jar and properties files have been added to a new `gradle/wrapper` folder.
 
 ```
-    └── HelloWorld
+    └── src
     └── gradlew
     └── gradlew.bat
     └── gradle
@@ -243,46 +248,13 @@ Handle it according to the logging provided by `gradle build`.
   0 Mon Nov 16 13:41:22 BDT 2015 META-INF/
     25 Mon Nov 16 13:41:22 BDT 2015 META-INF/MANIFEST.MF
      0 Mon Nov 16 13:41:22 BDT 2015 hello/
-   988 Mon Nov 16 13:41:22 BDT 2015 hello/HelloWorld.class
-   369 Mon Nov 16 13:41:22 BDT 2015 hello/Greeter.class
+   988 Mon Nov 16 13:41:22 BDT 2015 hello/cardGame.class
+   ...
 ```
 
-+ To wrap things up for this guide, here is the completed `build.gradle` file: `build.gradle`
-
-```
-  apply plugin: 'java'
-  apply plugin: 'eclipse'
-  apply plugin: 'application'
-
-  mainClassName = 'hello.HelloWorld'
-
-  // tag::repositories[]
-  repositories {
-      mavenCentral()
-  }
-  // end::repositories[]
-
-  // tag::jar[]
-  jar {
-      baseName = 'hello-world-gradle'
-      version =  '0.1.0'
-  }
-  // end::jar[]
-
-  // tag::dependencies[]
-  sourceCompatibility = 1.8
-  targetCompatibility = 1.8
-
-  dependencies {
-      ...
-  }
-  // end::dependencies[]
-
-  // tag::wrapper[]
-  task wrapper(type: Wrapper) {
-      gradleVersion = '2.3'
-  }
-  // end::wrapper[]
-```
 + NOTE :: The gradle wrapper might need to be upgraded
+
 according to the requirements of the production build
+
+##### There are bugs that need to be probed detected and handled ... I don't intend it for production, though this code is quite production ready.
+

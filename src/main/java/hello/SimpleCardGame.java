@@ -169,7 +169,7 @@ public class SimpleCardGame {
     public int start() {
         PlayingState gameState =new PlayingState();
         _isOn =1;
-        System.out.println("Starting game play , is on round "+ _isOn );
+        System.out.println("Starting game play , is on round :"+ _isOn );
         // draw three cards for each player
 
         for (Player pie:
@@ -191,7 +191,7 @@ public class SimpleCardGame {
             System.exit(0);
         }
       _isOn +=1;
-        System.out.println("Continue game to next round , is on round "+ _isOn + "state : "+isTie );
+        System.out.println("Continue game to next round , is on round :"+ _isOn + "state : "+isTie );
       // all the players draw a new card
         // check for tied state and take actions
         if(isTie){
@@ -215,13 +215,13 @@ public class SimpleCardGame {
         //for every step display the player deck
         for (Player pie:
              copyPlayers) {
-            System.out.print("Player :" + pie.getName());
+            System.out.print("Player :" + pie.getName() + "Owns these cards in this round ");
             List<String> cardStack = pie.getCards();
             for (String card:
                  cardStack) {
-                System.out.print(" , " + card);
+                System.out.print(card + ",");
             }
-            System.out.println("Owns these cards in this round");
+            System.out.println();
         }
         // compare them to check tie / end state
 
@@ -229,7 +229,7 @@ public class SimpleCardGame {
     }
     public void end() {
         // set all the players to the end state Winner/Loser
-        System.out.println("Wrapping off the game in round "+ _isOn + " with winner" + Winner.name);
+        System.out.println("Wrapping off the game in round "+ _isOn + " with winner :: " + Winner.name);
         // emd state instances
         LoserState lostState = new LoserState();
         WinnerState winState = new WinnerState();

@@ -42,7 +42,7 @@ public class Player extends PointsMap {
     }
     // check if pair State of cards appear
     public boolean checkPairState(){
-        System.out.println("Checking the trie State for player ::"+ this.name);
+        System.out.println("Checking the pair State for player ::"+ this.name);
         int checker = 1;
         int temp = 0;
         ListIterator iterator1 = cards.listIterator();
@@ -82,25 +82,27 @@ public class Player extends PointsMap {
                 // look back and compare the points
                 if (pointsTable.get(cards.get(i)) - pointsTable.get(cards.get(i-1)) == 1){
                     if(previousInSync == true) {
-                        sequenceValue += pointsTable.get(cards.get(i));
+                        //continued sequence .. maintained
+                        sequenceValue += pointsTable.get(cards.get(i-1));
                         previousInSync =true;
                     }
                     else {
+                        // sequence found
                         sequenceValue = 0;
-                        sequenceValue += pointsTable.get(cards.get(i));
+                        // sequenceValue += pointsTable.get(cards.get(i));
                         previousInSync = true;
                     }
                 } else {
                     // sequence breached ... flush it
                     sequenceValue =0;
-                    sequenceValue += pointsTable.get(cards.get(i));
+                    //sequenceValue += pointsTable.get(cards.get(i));
                     previousInSync = false;
                 }
             }
             // special start state only
             if( i==0) {
                 previousInSync =true; //since no data is available
-                sequenceValue += pointsTable.get(cards.get(i));
+                sequenceValue = 0;
             }
         }
         return sequenceValue;

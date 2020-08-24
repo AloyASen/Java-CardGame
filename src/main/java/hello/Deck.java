@@ -16,7 +16,7 @@ public class Deck{
     }
     private void shuffle() {
         // shuffle the deck
-        Collections.shuffle(Cards, new Random(3));
+        Collections.shuffle(Cards, new Random(2));
         System.out.println("the shuffled initial deck size of cards: " + deckSize());
         for (String card:
              Cards) {

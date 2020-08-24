@@ -21,7 +21,7 @@ public class PointsMap {
         pointsTable.put("6",5);
         pointsTable.put("5",4);
         pointsTable.put("4",3);
-        pointsTable.put("3",3);
+        pointsTable.put("3",2);
         pointsTable.put("2",1);
     }
 
