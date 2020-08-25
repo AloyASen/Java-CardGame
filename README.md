@@ -1,5 +1,5 @@
-#What should you expect from this project
-Solving a library Design problem for a card game
+# JAVA CARD GAME LIFECYCLE [ USING GRADLE] 
+
 ### Problem statement
 ```
 The festival season is here and we realize it's hard to play
@@ -44,6 +44,17 @@ The top card ( by victory sequencing ) wins a tie.
 + Secure game deck with overflow locking.
 + usage of Protected, private and public functors , to properly manage scope.
 
+# What should you expect from this project
+Solving a library Design problem for a card game
+![cardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/cardGame.png)
+
+![player.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/Player_Java.png)
+
+![SimpleCardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/simple_card_game_java.png)
+
+![GameDeck.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/gameDeck_java.png)
+
+![State.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/state_java.png)
 # Building this Projects with Gradle
 
 ##### This guide walks you through using Gradle to build a simple Java project.
@@ -276,5 +287,4 @@ private void shuffle() {
 
 ``` 
 
-##### There are bugs that need to be probed detected and handled ... I don't intend it for production, though this code is quite production ready.
-
+##### There are bugs that need to be probed detected and handled ... I don't intend it for production, though this code is quite production ready. 
