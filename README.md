@@ -50,7 +50,7 @@ Solving a library Design problem for a card game
 ![cardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/cardGame.png)
 #### The Main Creates the game instance ```Lifecycle Design pattern```
 ![SimpleCardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/simple_card_game_java.png)
-The players are botched up dynamically 
+#### The players are botched up dynamically 
 ![player.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/Player_Java.png)
 #### The Game Deck is shuuffled random once, securely ... securities applied
 ![GameDeck.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/gameDeck_java.png)
