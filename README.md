@@ -46,15 +46,15 @@ The top card ( by victory sequencing ) wins a tie.
 
 # What should you expect from this project
 Solving a library Design problem for a card game
-####The silos game of TeenPaatti ... here we call the main() 
+#### The silos game of TeenPaatti ... here we call the main() 
 ![cardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/cardGame.png)
-####the Main Creates the game instance ```Lifecycle Design pattern```
+#### The Main Creates the game instance ```Lifecycle Design pattern```
 ![SimpleCardGame.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/simple_card_game_java.png)
 The players are botched up dynamically 
 ![player.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/Player_Java.png)
-####The Game Deck is shuuffled random once, securely ... securities applied
+#### The Game Deck is shuuffled random once, securely ... securities applied
 ![GameDeck.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/gameDeck_java.png)
-####The Players maintain individual states ```State Design pattern```
+#### The Players maintain individual states ```State Design pattern```
 ![State.Java](https://github.com/AloyASen/Java-CardGame/blob/master/codeMap/state_java.png)
 # Building this Projects with Gradle
 
